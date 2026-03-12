@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# FastF1 cache
+cache/
+
+# Generated plots
+plots/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment
+.env
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code
+.claude/
+
+# SQLite databases
+*.sqlite
+
+# Internal dev notes
+plan.md
+
+# OS
+.DS_Store
+Thumbs.db

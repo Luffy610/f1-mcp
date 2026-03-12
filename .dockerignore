@@ -1,0 +1,16 @@
+cache/
+plots/
+__pycache__/
+**/__pycache__/
+.git/
+.github/
+.claude/
+.pytest_cache/
+tests/
+*.md
+!README.md
+plan.md
+.env
+*.sqlite
+.venv/
+.mcp.json

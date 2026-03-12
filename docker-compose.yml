@@ -1,0 +1,13 @@
+services:
+  f1-mcp:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - f1-cache:/app/cache
+      - f1-plots:/app/plots
+    restart: unless-stopped
+
+volumes:
+  f1-cache:
+  f1-plots:
