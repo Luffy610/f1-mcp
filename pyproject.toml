@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcp-f1"
-version = "0.1.0"
+version = "0.1.1"
 description = "Formula 1 analytics MCP server with 118+ tools powered by FastF1 and Ergast"
 readme = "README.md"
 license = "MIT"
