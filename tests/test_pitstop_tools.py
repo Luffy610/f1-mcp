@@ -1,7 +1,7 @@
 """E2E tests for pit stop tools (Tools 65-71)."""
 
 import pytest
-from services.pitstop_service import PitStopService
+from f1_mcp.services.pitstop_service import PitStopService
 from tests.conftest import assert_json_serializable
 
 service = PitStopService()

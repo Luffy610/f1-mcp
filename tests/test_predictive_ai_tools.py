@@ -1,7 +1,7 @@
 """E2E tests for predictive AI tools (Tools 99-108)."""
 
 import pytest
-from services.predictive_ai_service import PredictiveAIService
+from f1_mcp.services.predictive_ai_service import PredictiveAIService
 from tests.conftest import assert_json_serializable
 
 service = PredictiveAIService()

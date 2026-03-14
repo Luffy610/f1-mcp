@@ -2,7 +2,7 @@
 
 import os
 import pytest
-from services.visualization_service import VisualizationService
+from f1_mcp.services.visualization_service import VisualizationService
 from tests.conftest import assert_json_serializable
 
 service = VisualizationService()

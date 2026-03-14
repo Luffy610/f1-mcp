@@ -5,15 +5,10 @@ Uses 2023 Bahrain GP Race as the canonical test session — it's a well-known
 dataset that exercises all tools (pit stops, overtakes, safety cars, etc.).
 """
 
-import sys
-import os
 import json
 import pytest
 
-# Ensure project root is on path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
-from config import initialize_cache
+from f1_mcp.config import initialize_cache
 
 initialize_cache()
 

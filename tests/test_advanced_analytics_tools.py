@@ -1,7 +1,7 @@
 """E2E tests for advanced analytics tools (Tools 92-98)."""
 
 import pytest
-from services.advanced_analytics_service import AdvancedAnalyticsService
+from f1_mcp.services.advanced_analytics_service import AdvancedAnalyticsService
 from tests.conftest import assert_json_serializable
 
 service = AdvancedAnalyticsService()

@@ -1,7 +1,7 @@
 """E2E tests for sector tools (Tools 34-41)."""
 
 import pytest
-from services.sector_service import SectorService
+from f1_mcp.services.sector_service import SectorService
 from tests.conftest import assert_json_serializable
 
 service = SectorService()

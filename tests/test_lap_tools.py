@@ -1,7 +1,7 @@
 """E2E tests for lap tools (Tools 23-33)."""
 
 import pytest
-from services.lap_service import LapService
+from f1_mcp.services.lap_service import LapService
 from tests.conftest import assert_json_serializable
 
 service = LapService()

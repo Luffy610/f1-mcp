@@ -1,7 +1,7 @@
 """E2E tests for race position tools (Tools 72-78)."""
 
 import pytest
-from services.race_position_service import RacePositionService
+from f1_mcp.services.race_position_service import RacePositionService
 from tests.conftest import assert_json_serializable
 
 service = RacePositionService()

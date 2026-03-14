@@ -1,44 +1,36 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
+name: Bug Report
+about: Report a bug to help us improve
+title: "[Bug] "
+labels: bug
 assignees: ''
-
 ---
 
-## 🐛 Bug Report
+## Description
 
-### Describe the bug
-A clear and concise description of the bug. Explain what went wrong when interacting with the MCP server.
+A clear description of the bug.
 
----
+## Steps to Reproduce
 
-### To Reproduce
-Steps to reproduce the behavior:
+1.
+2.
+3.
 
-1. Start the MCP server using: `...`
-2. Connect using MCP client / tool: `...`
-3. Call the tool / endpoint: `...`
-4. Observe the error or unexpected behavior
+## Expected Behavior
 
----
+What you expected to happen.
 
-### Expected Behavior
-A clear and concise description of what you expected to happen.
+## Actual Behavior
 
----
+What actually happened. Include any error messages or tracebacks.
 
-### Actual Behavior
-Describe what actually happened instead.
+## Environment
 
-Include:
-- Error messages
-- Unexpected responses
-- Logs if available
+- **f1-mcp version**: (e.g., 0.1.0)
+- **Python version**: (e.g., 3.13)
+- **OS**: (e.g., Ubuntu 24.04, macOS 15, Windows 11)
+- **MCP client**: (e.g., Claude Desktop, Claude Code)
 
----
+## Additional Context
 
-### Logs / Error Output
-```text
-Paste relevant server logs or error stack trace here
+Any other context, screenshots, or logs that might help.

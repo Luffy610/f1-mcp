@@ -1,7 +1,7 @@
 """E2E tests for strategy tools (Tools 57-64)."""
 
 import pytest
-from services.strategy_service import StrategyService
+from f1_mcp.services.strategy_service import StrategyService
 from tests.conftest import assert_json_serializable
 
 service = StrategyService()
