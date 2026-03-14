@@ -1,7 +1,7 @@
 """E2E tests for provider tools (Tools 115-118)."""
 
 import pytest
-from services.provider_service import ProviderService
+from f1_mcp.services.provider_service import ProviderService
 from tests.conftest import assert_json_serializable
 
 service = ProviderService()

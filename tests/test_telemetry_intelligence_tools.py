@@ -1,7 +1,7 @@
 """E2E tests for telemetry intelligence tools (Tools 85-91)."""
 
 import pytest
-from services.telemetry_intelligence_service import TelemetryIntelligenceService
+from f1_mcp.services.telemetry_intelligence_service import TelemetryIntelligenceService
 from tests.conftest import assert_json_serializable
 
 service = TelemetryIntelligenceService()

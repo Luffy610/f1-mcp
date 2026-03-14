@@ -2,9 +2,9 @@ name: Tests
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   test:
@@ -22,7 +22,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('pyproject.toml') }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
@@ -30,15 +30,14 @@ jobs:
         uses: actions/cache@v4
         with:
           path: cache/
-          key: fastf1-cache-${{ hashFiles('requirements.txt') }}
+          key: fastf1-cache-${{ hashFiles('pyproject.toml') }}
           restore-keys: |
             fastf1-cache-
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest
+          pip install -e ".[dev]"
 
       - name: Run tests
         run: python -m pytest tests/ -v

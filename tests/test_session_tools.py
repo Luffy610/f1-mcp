@@ -1,7 +1,7 @@
 """E2E tests for session tools (Tools 1-12)."""
 
 import pytest
-from services.session_service import SessionService
+from f1_mcp.services.session_service import SessionService
 from tests.conftest import assert_json_serializable
 
 service = SessionService()

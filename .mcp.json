@@ -1,8 +1,7 @@
 {
   "mcpServers": {
     "f1": {
-      "type": "sse",
-      "url": "http://localhost:8000/sse"
+      "command": "f1-mcp"
     }
   }
 }

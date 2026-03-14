@@ -1,7 +1,7 @@
 """E2E tests for driver tools (Tools 13-22)."""
 
 import pytest
-from services.driver_service import DriverService
+from f1_mcp.services.driver_service import DriverService
 from tests.conftest import assert_json_serializable
 
 service = DriverService()
