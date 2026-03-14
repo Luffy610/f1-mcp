@@ -1,5 +1,7 @@
 import os
 import numpy as np
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from f1_mcp.core.session_cache import session_cache
 from f1_mcp.core.telemetry_cache import telemetry_cache
@@ -9,7 +11,10 @@ class VisualizationService:
 
     """Service for generating race analysis plots and charts."""
     def __init__(self):
-        self.plot_dir = "plots"
+        self.plot_dir = os.environ.get(
+            "F1_PLOT_DIR",
+            os.path.join(os.path.expanduser("~"), ".f1-mcp", "plots")
+        )
         os.makedirs(self.plot_dir, exist_ok=True)
 
     def load_session(self, year, gp, session):
@@ -113,6 +118,8 @@ class VisualizationService:
         s = self.load_session(year, gp, session)
 
         laps = s.laps
+        if laps is None or laps.empty:
+            return {"error": "No lap data available"}
 
         drv = laps[laps["Driver"] == driver].dropna(subset=["LapTime"])
 
@@ -139,6 +146,8 @@ class VisualizationService:
         s = self.load_session(year, gp, session)
 
         laps = s.laps
+        if laps is None or laps.empty:
+            return {"error": "No lap data available"}
 
         drv = laps[laps["Driver"] == driver]
 
@@ -168,6 +177,8 @@ class VisualizationService:
         s = self.load_session(year, gp, session)
 
         laps = s.laps
+        if laps is None or laps.empty:
+            return {"error": "No lap data available"}
 
         drv = laps[laps["Driver"] == driver]
 

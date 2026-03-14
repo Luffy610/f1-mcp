@@ -40,12 +40,18 @@ class TelemetryIntelligenceService:
 
         dist = self._get_corner_distance(s, corner)
 
+        if dist is None:
+            return None
+
         tel = self.get_telemetry(year, gp, session, driver, lap)
 
         entry = tel[
             (tel["Distance"] >= dist - 80) &
             (tel["Distance"] <= dist - 20)
         ]
+
+        if entry.empty:
+            return None
 
         return float(entry["Speed"].mean())
 
@@ -56,12 +62,18 @@ class TelemetryIntelligenceService:
 
         dist = self._get_corner_distance(s, corner)
 
+        if dist is None:
+            return None
+
         tel = self.get_telemetry(year, gp, session, driver, lap)
 
         apex = tel[
             (tel["Distance"] >= dist - 10) &
             (tel["Distance"] <= dist + 10)
         ]
+
+        if apex.empty:
+            return None
 
         return float(apex["Speed"].min())
 
@@ -72,12 +84,18 @@ class TelemetryIntelligenceService:
 
         dist = self._get_corner_distance(s, corner)
 
+        if dist is None:
+            return None
+
         tel = self.get_telemetry(year, gp, session, driver, lap)
 
         exit_zone = tel[
             (tel["Distance"] >= dist + 20) &
             (tel["Distance"] <= dist + 80)
         ]
+
+        if exit_zone.empty:
+            return None
 
         return float(exit_zone["Speed"].mean())
 
@@ -92,6 +110,9 @@ class TelemetryIntelligenceService:
 
         exit_a = self.corner_exit_speed(year, gp, session, driver_a, lap_a, corner)
         exit_b = self.corner_exit_speed(year, gp, session, driver_b, lap_b, corner)
+
+        if any(v is None for v in [entry_a, entry_b, apex_a, apex_b, exit_a, exit_b]):
+            return None
 
         return {
             "entry_delta": entry_a - entry_b,

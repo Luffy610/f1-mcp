@@ -1,3 +1,4 @@
+import os
 import fastf1
 import pandas as pd
 from typing import Dict, Any
@@ -10,8 +11,10 @@ class FastF1Loader:
     """
 
     def __init__(self):
-        # Ensure FastF1 cache is enabled
-        fastf1.Cache.enable_cache("cache")
+        # Use F1_CACHE_DIR env var, or default to ~/.f1-mcp/cache
+        cache_dir = os.environ.get("F1_CACHE_DIR", os.path.join(os.path.expanduser("~"), ".f1-mcp", "cache"))
+        os.makedirs(cache_dir, exist_ok=True)
+        fastf1.Cache.enable_cache(cache_dir)
 
     def load_session(self, year: int, grand_prix: str, session_type: str):
         """

@@ -23,7 +23,7 @@ jobs:
       - name: Cache FastF1 data
         uses: actions/cache@v4
         with:
-          path: cache/
+          path: ~/.f1-mcp/cache
           key: fastf1-cache-${{ hashFiles('pyproject.toml') }}
           restore-keys: |
             fastf1-cache-
