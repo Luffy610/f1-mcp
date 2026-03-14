@@ -132,7 +132,10 @@ class DriverService:
         if row.empty:
             return None
 
-        return float(row["Points"].values[0])
+        val = row["Points"].values[0]
+        if pd.isna(val):
+            return None
+        return float(val)
 
     # TOOL 21
     def get_constructor_standings(self, year):

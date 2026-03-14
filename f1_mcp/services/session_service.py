@@ -31,19 +31,12 @@ class SessionService:
 
     def list_seasons(self):
         """
-        Dynamically detect available seasons supported by FastF1
+        Return available seasons supported by FastF1.
+        FastF1 supports seasons from 2018 onward with full telemetry,
+        and schedule data from 2018+.
         """
-        seasons = []
         current_year = datetime.now().year
-
-        for year in range(1950, current_year + 2):
-            try:
-                fastf1.get_event_schedule(year)
-                seasons.append(year)
-            except Exception:
-                continue
-
-        return seasons
+        return list(range(2018, current_year + 1))
 
     # -----------------------------
     # TOOL 2

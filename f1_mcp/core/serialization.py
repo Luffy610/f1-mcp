@@ -69,17 +69,17 @@ def sanitize_df(df):
 
     # Convert Timedelta columns to strings
     for col in result.columns:
-        if col in TIMEDELTA_COLUMNS or pd.api.types.is_timedelta64_dtype(result[col]):
+        if col in TIMEDELTA_COLUMNS or result[col].dtype.kind == "m":
             result[col] = result[col].apply(lambda x: str(x) if pd.notna(x) else None)
 
     # Convert Timestamp columns
     for col in result.columns:
-        if pd.api.types.is_datetime64_any_dtype(result[col]):
+        if result[col].dtype.kind == "M":
             result[col] = result[col].apply(lambda x: str(x) if pd.notna(x) else None)
 
     # Convert remaining float columns: NaN → None, numpy float → Python float
     for col in result.columns:
-        if pd.api.types.is_float_dtype(result[col]):
+        if result[col].dtype.kind == "f":
             result[col] = result[col].apply(
                 lambda x: None if pd.isna(x) else float(x)
             )

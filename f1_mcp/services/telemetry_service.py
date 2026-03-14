@@ -79,7 +79,7 @@ class TelemetryService:
         """Get engine RPM values across a lap."""
         tel = self._get_tel(year, gp, session, driver, lap)
 
-        if "RPM" not in tel:
+        if tel is None or tel.empty or "RPM" not in tel:
             return None
 
         return tel["RPM"].tolist()
@@ -89,7 +89,7 @@ class TelemetryService:
         """Get DRS activation status across a lap."""
         tel = self._get_tel(year, gp, session, driver, lap)
 
-        if "DRS" not in tel:
+        if tel is None or tel.empty or "DRS" not in tel:
             return None
 
         return tel["DRS"].tolist()
@@ -107,6 +107,9 @@ class TelemetryService:
     def get_telemetry_segment(self, year, gp, session, driver, lap, start, end):
         """Get telemetry data for a specific distance segment."""
         tel = self._get_tel(year, gp, session, driver, lap)
+
+        if tel is None or tel.empty:
+            return None
 
         seg = tel[(tel["Distance"] >= start) & (tel["Distance"] <= end)]
 
@@ -130,6 +133,9 @@ class TelemetryService:
         distance = corner.iloc[0]["Distance"]
 
         tel = self._get_tel(year, gp, session, driver, lap)
+
+        if tel is None or tel.empty:
+            return None
 
         window = tel[
             (tel["Distance"] >= distance - 50) &
@@ -158,12 +164,18 @@ class TelemetryService:
         """Find the maximum speed achieved during a lap."""
         tel = self._get_tel(year, gp, session, driver, lap)
 
+        if tel is None or tel.empty:
+            return None
+
         return float(np.max(tel["Speed"]))
 
     # 54
     def find_min_speed_corner(self, year, gp, session, driver, lap):
         """Find the lowest speed point during a lap."""
         tel = self._get_tel(year, gp, session, driver, lap)
+
+        if tel is None or tel.empty:
+            return None
 
         idx = tel["Speed"].idxmin()
 
@@ -177,6 +189,9 @@ class TelemetryService:
         """Analyze throttle usage statistics for a lap."""
         tel = self._get_tel(year, gp, session, driver, lap)
 
+        if tel is None or tel.empty:
+            return None
+
         throttle = tel["Throttle"]
 
         return {
@@ -189,6 +204,9 @@ class TelemetryService:
     def braking_point_analysis(self, year, gp, session, driver, lap):
         """Analyze braking events and average brake pressure for a lap."""
         tel = self._get_tel(year, gp, session, driver, lap)
+
+        if tel is None or tel.empty:
+            return None
 
         braking_points = tel[tel["Brake"] > 0]
 

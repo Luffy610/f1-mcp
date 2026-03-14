@@ -59,9 +59,13 @@ class LapService:
         if fastest is None:
             return None
 
+        lap_num = fastest["LapNumber"]
+        if pd.isna(lap_num):
+            return None
+
         return {
             "driver": fastest["Driver"],
-            "lap_number": int(fastest["LapNumber"]),
+            "lap_number": int(lap_num),
             "lap_time": str(fastest["LapTime"])
         }
 
